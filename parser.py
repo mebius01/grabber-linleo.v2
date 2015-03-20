@@ -15,7 +15,7 @@ title_text=re.search('(?<=<title>).*?(?= текст перевод)', read_html)
 open_html.close()
 file_hush=open('hush', 'r+')
 file_hush_2=file_hush.readlines()
-os.mkdir(title_text) #
+os.mkdir(title_text)
 os.chdir(title_text)
 # создаем необходимое количество папок
 len_word=len(word_value)/10 
@@ -54,15 +54,17 @@ def F(b):
 list_dir=[]
 list_file=[]
 list_file_wav=[]
-#~ for i in os.listdir("."):
-	#~ if i[-4:]=='.mp3':
-		#~ os.system('ecasound -i ' +i +' -ea:20% -o ' +i[:-4]+'.wav')
+s=""
 for i in os.listdir("."):
 	if i[-4:]=='.mp3':
-		list_file.append(i)
+		os.system('ecasound -i ' +i +' -ea:20% -o ' +i[:-4]+'.wav')
+for i in os.listdir("."):
+	#~ if i[-4:]=='.mp3':
+		#~ list_file.append(i)
 	if i[-4:]=='.wav':
+		
 		list_file_wav.append(i)
-	elif i[-4:] != ('.mp3' or '.txt' or '.wav'):
+	elif (i[-4:]!='.mp3') and (i[-4:]!='.txt') and (i[-4:]!='.wav'):
 		list_dir.append(i)
 
 for i in list_dir:
