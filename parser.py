@@ -86,14 +86,13 @@ for i in os.listdir("."):
 
 # раскидываем файлы по нужным директориям
 def list_dir(list_d, list_f):
-	def rec(d):
-		z=10
+	def rec(d, z):
 		while z != 0:
 				shutil.move(list_f.pop(0), d) 
 				z-=1
-	for i in list_d:
-		if len(os.listdir(i)) == 0:
-			rec(i)
+	while len(list_f) >0:
+		for i in list_d:
+			rec(i, 1)
 try:
 	list_dir(list_dir_mp3, list_file_mp3)
 except IndexError:
