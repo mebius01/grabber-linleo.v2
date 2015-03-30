@@ -45,14 +45,18 @@ while len(word_value) != 0:
 	os.rename(c, a+' - '+b+'.mp3')
 # создаем файл слово - перевод
 def word_text():
-	list_dir=os.listdir('.')
-	list_dir.sort()
-	for i in list_dir:
-		file_word=open(title_text+'.txt', 'a+')
-		file_word.writelines(i[0:-4]+'\n')
-		file_word.close()
-word_text()
-
+	z=0
+	file_word=open('ang-rus.txt', 'a+')
+	file_word_translate=open('rus.txt', 'a+')
+	file_word_value=open('ang.txt', 'a+')
+	while len(word_value) > z:
+		file_word.writelines(word_value[z]+' - '+translate_value[z]+'\n')
+		file_word_value.writelines(word_value[z]+'\n')
+		file_word_translate.writelines(translate_value[z]+'\n')
+		z+=1
+	file_word_translate.close()
+	file_word_value.close()
+	file_word.close()
 # удаляем пробелы, для ecasound
 def space(s, e):
 
