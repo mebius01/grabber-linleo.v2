@@ -63,21 +63,23 @@ for i in id_list:
 	
 
 # создаем файл слово - перевод NOT WORK
-#~ def word_text(a):
-	#~ os.chdir(a)
-	#~ b=os.listdir('.')
-	#~ z=0
-	#~ file_word=open('ang-rus.txt', 'a+')
-	#~ file_word_translate=open('rus.txt', 'a+')
-	#~ file_word_value=open('ang.txt', 'a+')
-	#~ while len(b) > z:
-	#~ for i in b:
-		#~ file_word.writelines(i+'\n')
-		#~ file_word_translate.writelines(translate_value[z]+'\n')
-		#~ z+=1
-	#~ file_word_translate.close()
-	#~ file_word_value.close()
-	#~ file_word.close()
+def word_text(a):
+	os.chdir(a)
+	b=os.listdir('.')
+	file_word=open('ang-rus.txt', 'a+')
+	file_word_translate=open('rus.txt', 'a+')
+	file_word_value=open('ang.txt', 'a+')
+	for i in b:
+		a=i[:-5]
+		b=i.split(' - ')[0]
+		c=i.split(' - ')[1][:-5]
+
+		file_word.writelines(a+'\n')
+		file_word_value.writelines(b+'\n')
+		file_word_translate.writelines(c+'\n')
+	file_word_translate.close()
+	file_word_value.close()
+	file_word.close()
 
 
 # раскидываем по спискам wav и mp3 + списки директорий WORK
